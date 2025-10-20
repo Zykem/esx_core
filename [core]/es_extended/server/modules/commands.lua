@@ -2,7 +2,11 @@ ESX.RegisterCommand(
     { "setcoords", "tp" },
     "admin",
     function(xPlayer, args)
-        xPlayer.setCoords({ x = args.x, y = args.y, z = args.z })
+        local x = tonumber(args.x) + 0.0
+        local y = tonumber(args.y) + 0.0
+        local z = tonumber(args.z) + 0.0
+
+        xPlayer.setCoords({ x = x, y = y, z = z })
         if Config.AdminLogging then
             ESX.DiscordLogFields("UserActions", "Set Coordinates /setcoords Triggered!", "pink", {
                 { name = "Player", value = xPlayer and xPlayer.name or "Server Console", inline = true },
